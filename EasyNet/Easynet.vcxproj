@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\base\Condition.h" />
+    <ClInclude Include="include\base\Cpp11Support.h" />
+    <ClInclude Include="include\base\MessageQueue.h" />
+    <ClInclude Include="include\base\MutexLock.h" />
+    <ClInclude Include="include\base\Noncopyable.h" />
+    <ClInclude Include="include\base\PlatformDefine.h" />
+    <ClInclude Include="include\base\Singleton.h" />
+    <ClInclude Include="include\base\StringPiece.h" />
+    <ClInclude Include="include\base\Thread.h" />
+    <ClInclude Include="include\base\ThreadLocal.h" />
+    <ClInclude Include="include\base\TimeStamp.h" />
+    <ClInclude Include="include\net\Acceptor.h" />
+    <ClInclude Include="include\net\Channel.h" />
+    <ClInclude Include="include\net\ChannelBuffer.h" />
+    <ClInclude Include="include\net\Codec.h" />
+    <ClInclude Include="include\net\Endian.h" />
+    <ClInclude Include="include\net\EventLoop.h" />
+    <ClInclude Include="include\net\EventLoopThread.h" />
+    <ClInclude Include="include\net\EventLoopThreadGroup.h" />
+    <ClInclude Include="include\net\FixedLengthFrameCodec.h" />
+    <ClInclude Include="include\net\FooService.pb.h" />
+    <ClInclude Include="include\net\HttpParser.h" />
+    <ClInclude Include="include\net\HttpRequest.h" />
+    <ClInclude Include="include\net\HttpResponse.h" />
+    <ClInclude Include="include\net\HttpServer.h" />
+    <ClInclude Include="include\net\ICallBackDefine.h" />
+    <ClInclude Include="include\net\InternetAddress.h" />
+    <ClInclude Include="include\net\LengthFieldFrameCodec.h" />
+    <ClInclude Include="include\net\LineBasedFrameCodec.h" />
+    <ClInclude Include="include\net\Message.h" />
+    <ClInclude Include="include\net\NetbaseLightTest.pb.h" />
+    <ClInclude Include="include\net\Poller.h" />
+    <ClInclude Include="include\net\PollerFactory.h" />
+    <ClInclude Include="include\net\ProtobufDispatcher.h" />
+    <ClInclude Include="include\net\ProtobufFrameCodec.h" />
+    <ClInclude Include="include\net\RpcChannel.h" />
+    <ClInclude Include="include\net\RpcMessage.pb.h" />
+    <ClInclude Include="include\net\RpcServer.h" />
+    <ClInclude Include="include\net\SelectPoller.h" />
+    <ClInclude Include="include\net\Socket.h" />
+    <ClInclude Include="include\net\SocketApiWrapper.h" />
+    <ClInclude Include="include\net\SoketDefine.h" />
+    <ClInclude Include="include\net\TcpClient.h" />
+    <ClInclude Include="include\net\TcpConnection.h" />
+    <ClInclude Include="include\net\TcpConnector.h" />
+    <ClInclude Include="include\net\TcpServer.h" />
+    <ClInclude Include="include\net\Timer.h" />
+    <ClInclude Include="include\net\TimerLoopThread.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\base\Condition.cpp" />
+    <ClCompile Include="src\base\MutexLock.cpp" />
+    <ClCompile Include="src\base\Thread.cpp" />
+    <ClCompile Include="src\base\TimeStamp.cpp" />
+    <ClCompile Include="src\net\Acceptor.cpp" />
+    <ClCompile Include="src\net\Channel.cpp" />
+    <ClCompile Include="src\net\ChannelBuffer.cpp" />
+    <ClCompile Include="src\net\EventLoop.cpp" />
+    <ClCompile Include="src\net\EventLoopThread.cpp" />
+    <ClCompile Include="src\net\EventLoopThreadGroup.cpp" />
+    <ClCompile Include="src\net\FixedLengthFrameCodec.cpp" />
+    <ClCompile Include="src\net\FooService.pb.cc" />
+    <ClCompile Include="src\net\HttpParser.cpp" />
+    <ClCompile Include="src\net\HttpRequest.cpp" />
+    <ClCompile Include="src\net\HttpResponse.cpp" />
+    <ClCompile Include="src\net\HttpServer.cpp" />
+    <ClCompile Include="src\net\InternetAddress.cpp" />
+    <ClCompile Include="src\net\LengthFieldFrameCodec.cpp" />
+    <ClCompile Include="src\net\LineBasedFrameCodec.cpp" />
+    <ClCompile Include="src\net\NetbaseLightTest.pb.cc" />
+    <ClCompile Include="src\net\PollerFactory.cpp" />
+    <ClCompile Include="src\net\ProtobufFrameCodec.cpp" />
+    <ClCompile Include="src\net\Reactor.cpp" />
+    <ClCompile Include="src\net\RpcChannel.cpp" />
+    <ClCompile Include="src\net\RpcMessage.pb.cc" />
+    <ClCompile Include="src\net\RpcServer.cpp" />
+    <ClCompile Include="src\net\SelectPoller.cpp" />
+    <ClCompile Include="src\net\Socket.cpp" />
+    <ClCompile Include="src\net\SocketApiWrapper.cpp" />
+    <ClCompile Include="src\net\TcpClient.cpp" />
+    <ClCompile Include="src\net\TcpConnection.cpp" />
+    <ClCompile Include="src\net\TcpConnector.cpp" />
+    <ClCompile Include="src\net\TcpServer.cpp" />
+    <ClCompile Include="src\net\TimerLoopThread.cpp" />
+    <ClCompile Include="src\ut\ChatClient.cpp" />
+    <ClCompile Include="src\ut\ChatServer.cpp" />
+    <ClCompile Include="src\ut\EchoClient.cpp" />
+    <ClCompile Include="src\ut\EchoServer.cpp" />
+    <ClCompile Include="src\ut\HttpServer_unitetest.cpp" />
+    <ClCompile Include="src\ut\LogClient.cpp" />
+    <ClCompile Include="src\ut\LogServer.cpp" />
+    <ClCompile Include="src\ut\ProtobufCodec_Client_unittest.cpp" />
+    <ClCompile Include="src\ut\ProtobufCodec_Server_unittest.cpp" />
+    <ClCompile Include="src\ut\RpcClient_unittest.cpp" />
+    <ClCompile Include="src\ut\RpcServer_unittest.cpp" />
+    <ClCompile Include="src\ut\TimerManager_unittest.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E8D396B2-FE8A-41EC-968F-2868953B7EFA}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Easynet</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\RT_TDS\BRANCHES\1.1\UIH\include\external;E:\Work\Software\SourceCode\EasyNet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libprotobuf64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\RT_TDS\BRANCHES\1.1\UIH\lib_debug\external;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>EXPORT_EASYNET;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\RT_TDS\BRANCHES\1.1\UIH\include\external;E:\Work\Software\SourceCode\EasyNet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libprotobuf64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\RT_TDS\BRANCHES\1.1\UIH\lib_debug\external;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\base">
+      <UniqueIdentifier>{6d58ac31-1708-4cbe-a27d-267576de67a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\net">
+      <UniqueIdentifier>{5333cdc9-d65e-46bf-a3d9-9adbe6025f56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ut">
+      <UniqueIdentifier>{c3e1b0bd-cba0-4e74-a446-e8f7326ae98d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\base">
+      <UniqueIdentifier>{d35033d7-23ef-4187-9833-2a54a670c80d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\net">
+      <UniqueIdentifier>{deb53067-5af0-43fa-a42e-a34354e48a74}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\net\Acceptor.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\ChannelBuffer.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\Channel.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\Codec.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\Endian.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\EventLoop.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\EventLoopThread.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\EventLoopThreadGroup.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\FixedLengthFrameCodec.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\HttpParser.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\HttpRequest.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\HttpResponse.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\HttpServer.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\InternetAddress.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\LengthFieldFrameCodec.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\LineBasedFrameCodec.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\FooService.pb.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\SelectPoller.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\Message.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\NetbaseLightTest.pb.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\Poller.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\PollerFactory.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\ProtobufDispatcher.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\ProtobufFrameCodec.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\RpcChannel.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\RpcMessage.pb.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\RpcServer.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\Socket.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\SocketApiWrapper.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\SoketDefine.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\TcpClient.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\TcpConnection.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\TcpServer.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\TcpConnector.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\Timer.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\TimerLoopThread.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\Condition.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\Cpp11Support.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\MessageQueue.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\MutexLock.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\Noncopyable.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\PlatformDefine.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\Singleton.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\StringPiece.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\Thread.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\ThreadLocal.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\base\TimeStamp.h">
+      <Filter>Header Files\base</Filter>
+    </ClInclude>
+    <ClInclude Include="include\net\ICallBackDefine.h">
+      <Filter>Header Files\net</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\base\Condition.cpp">
+      <Filter>Source Files\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\TimeStamp.cpp">
+      <Filter>Source Files\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\MutexLock.cpp">
+      <Filter>Source Files\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\Thread.cpp">
+      <Filter>Source Files\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\Acceptor.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\Channel.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\ChannelBuffer.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\EventLoop.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\EventLoopThread.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\EventLoopThreadGroup.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\FixedLengthFrameCodec.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\FooService.pb.cc">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\HttpParser.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\HttpRequest.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\HttpResponse.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\HttpServer.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\InternetAddress.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\LengthFieldFrameCodec.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\LineBasedFrameCodec.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\NetbaseLightTest.pb.cc">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\PollerFactory.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\ProtobufFrameCodec.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\Reactor.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\RpcChannel.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\RpcMessage.pb.cc">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\RpcServer.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\SelectPoller.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\Socket.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\SocketApiWrapper.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\TcpClient.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\TcpConnection.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\TcpConnector.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\TcpServer.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\net\TimerLoopThread.cpp">
+      <Filter>Source Files\net</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\ChatClient.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\ChatServer.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\EchoClient.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\EchoServer.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\HttpServer_unitetest.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\LogClient.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\LogServer.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\ProtobufCodec_Client_unittest.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\ProtobufCodec_Server_unittest.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\RpcClient_unittest.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\RpcServer_unittest.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ut\TimerManager_unittest.cpp">
+      <Filter>Source Files\ut</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
