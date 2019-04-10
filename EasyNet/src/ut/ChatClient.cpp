@@ -7,6 +7,7 @@
 #include "EasyNet/include/net/TcpConnection.h"
 #include "EasyNet/include/base/StringPiece.h"
 #include "EasyNet/include/base/MutexLock.h"
+#include "EasyNet/include/base/Log.h"
 #include <iostream>
 #include <stdio.h>
 
@@ -49,15 +50,15 @@ private:
 
 	void onStringMessage(const TcpConnectionPtr&, const StringPiece& message)
 	{
-		std::cout << "ChatClient_" << index_ << " <<" << message.as_string() << std::endl;
+		LOG_TRACE << "ChatClient_" << index_ << " <<" << message.as_string();
 	}
 
 	void onConnection(const TcpConnectionPtr& conn)
 	{
-		std::cout << "ChatClient_" << index_ << " #"
+		LOG_TRACE << "ChatClient_" << index_ << " #"
 			<< conn->GetLocalAddress().GetIpAndPort() << " -> "
 			<< conn->GetPeerAddress().GetIpAndPort() << " is "
-			<< (conn->IsConnected() ? "UP" : "DOWN") << std::endl;
+			<< (conn->IsConnected() ? "UP" : "DOWN");
 
 		LockGuard lock(&mutex_);
 		if (conn->IsConnected())
@@ -77,11 +78,20 @@ private:
 	size_t index_;
 };
 
+
+using namespace Logger;
+Shared_ptr<SyncLogging> syncLogging(new SyncLogging);
+void output_func(const char* msg, uint64_t len)
+{
+	syncLogging->Append(msg, len);
+}
+
 int main()
 {
+	Log::SetOutputFuncCallback(output_func);
 	EventLoopThread loopThread;
 	uint16_t port = 2000;
-	InternetAddress serverAddr("10.8.61.62", port);
+	InternetAddress serverAddr(port);
 	EventLoop* loop = loopThread.StartLoopThread();
 
 

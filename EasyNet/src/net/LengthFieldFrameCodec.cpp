@@ -3,6 +3,7 @@
 #include "EasyNet/include/net/ChannelBuffer.h"
 #include "EasyNet/include/net/TcpConnection.h"
 #include "EasyNet/include/net/Endian.h"
+#include "EasyNet/include/base/Log.h"
 
 
 
@@ -18,9 +19,7 @@ namespace Net
             const int32_t len = Endian::NetworkToHost32(be32);
             if (len > 65536 || len < 0)
             {
-                std::cout << "Invalid length " << len;
-                //TODO, should support this length//
-
+                LOG_ERROR << "Invalid length " << len;
                 conn->Shutdown(); 
                 break;
             }

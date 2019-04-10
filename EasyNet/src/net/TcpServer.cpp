@@ -7,6 +7,7 @@
 #include "EasyNet/include/net/Acceptor.h"
 #include "EasyNet/include/net/InternetAddress.h"
 #include "EasyNet/include/net/EventLoopThreadGroup.h"
+#include "EasyNet/include/base/Log.h"
 #include <sstream>
 #include <iostream>
 
@@ -36,7 +37,7 @@ namespace Net
     TcpServer::~TcpServer()
     {
         loop_->AssertInLoopThreadOrDie();
-        //CLOG_INFO("TcpServer::~TcpServer [" << name_ << "] destructing");
+        LOG_INFO << "TcpServer::~TcpServer [" << name_ << "] down";
         ConnectionMap::iterator it = connections_.begin();
         for ( ; it != connections_.end(); ++it)
         {
@@ -76,9 +77,9 @@ namespace Net
         ++nextConnId_;
         string connName = name_ + buf;
 
-        //CLOG_INFO("TcpServer::newConnection [" << name_
-        //    << "] - new connection [" << connName
-        //    << "] from " << peerAddr.GetIpAndPort());
+        LOG_INFO << "TcpServer::newConnection [" << name_
+            << "] - new connection [" << connName
+            << "] from " << peerAddr.GetIpAndPort();
         
         sockaddr_in_t local = SocketsApi::GetLocalAddr(sockfd);
         InternetAddress localAddr(local);
@@ -108,8 +109,8 @@ namespace Net
     {
         loop_->AssertInLoopThreadOrDie();
         std::string connRawName = conn->GetConnectionRawName();
-        std::cout << "TcpServer::removeConnectionInLoop [" << name_
-            << "] - connection " << connRawName << std::endl;
+        LOG_INFO << "TcpServer::removeConnectionInLoop [" << name_
+            << "] - connection " << connRawName;
         size_t n = connections_.erase(connRawName);
         assert(n == 1);
         EventLoop* ioLoop = conn->GetConnectionEventLoop();

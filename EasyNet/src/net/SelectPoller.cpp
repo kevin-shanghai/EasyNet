@@ -1,7 +1,7 @@
 #include "EasyNet/include/net/SoketDefine.h"
 #include "EasyNet/include/net/SelectPoller.h"
 #include "EasyNet/include/net/Channel.h"
-//#include "Common/CommonUtility/csw_control_logger.h"
+#include "EasyNet/include/base/Log.h"
 #include <assert.h>
 #include <iostream>
 
@@ -25,7 +25,6 @@ namespace Net
 			polledChannelsMap_.insert(std::pair<socket_t, Channel*>(channel->GetSocketFd(), channel));
 			fdSet_.insert(channel->GetSocketFd());
 		}
-        std::cout << "SelectPoller::UpdateChannel fd is:"  << channel->GetSocketFd() << std::endl;
 		Update(channel);
 	}
 
@@ -33,7 +32,7 @@ namespace Net
 	{
 		assert(channel);
 		socket_t fd = channel->GetSocketFd();
-        //CLOG_INFO("RemoveChannel fd is:" << fd);
+        LOG_TRACE << "RemoveChannel fd is:" << fd;
 		assert(polledChannelsMap_.find(fd) != polledChannelsMap_.end());  
 		assert(fdSet_.find(fd) != fdSet_.end());
 		FD_CLR(fd, &select_readfds_);
@@ -46,8 +45,8 @@ namespace Net
 	void SelectPoller::Update(Channel* channel)
 	{
 		assert(channel);
-        //CLOG_INFO("+++fd = " << channel->GetSocketFd()
-            //<< " interestEvent:" << channel->GetEventType());
+        LOG_TRACE << " Update fd = " << channel->GetSocketFd()
+             	  << " interestEvent:" << static_cast<int64_t>(channel->GetEventType());
 		FD_SET(channel->GetSocketFd(), &select_expectfds_);
 		if (channel->GetEventType() & kReadEvent)
 		{
@@ -100,18 +99,17 @@ namespace Net
 		}
 		else if (!numActiveEvents)
 		{
-            //std::cout << "Nothing happen in event loop..." << " timeoutMs=" << timeoutMs << std::endl;
+            
 		}
 		else
 		{
 #ifdef ON_WINDOWS
             int err = WSAGetLastError();
-			std::cout << "select system call error, info:" 
+			LOG_ERROR << "select system call error, info:" 
                 << " errno:" << err
                 << strerror(err) 
                 << " read fdcount:" << read_fds_.fd_count
-                << " write fdcount:" << write_fds_.fd_count
-                << std::endl;
+                << " write fdcount:" << write_fds_.fd_count;
 #endif
 		}
 	}

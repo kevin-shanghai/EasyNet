@@ -3,14 +3,10 @@
 
 #include "EasyNet/include/net/TcpConnection.h"
 
-#ifdef EXPORT_NETBASElIGHT
-#define CSW_EXPORT_OWNER
-#endif
-
 
 namespace Net
 {
-	class EXPORT_NETBASElIGHT LineBasedFrameCodec
+	class  LineBasedFrameCodec
 	{
 	public:
 		typedef Function< void(const TcpConnectionPtr& conn, const StringPiece& msg) > CodecMessageCallback;

@@ -14,16 +14,12 @@
 #include "EasyNet/include/net/Codec.h"
 
 
-#ifdef EXPORT_NETBASElIGHT
-#define CSW_EXPORT_OWNER
-#endif
-
 
 namespace Net
 {
     class EventLoop;
     class HttpParser;
-    class EXPORT_NETBASElIGHT TcpConnection  : private Noncopyable
+    class TcpConnection  : private Noncopyable
         , public enable_shared_from_this<TcpConnection>
     {
     public:

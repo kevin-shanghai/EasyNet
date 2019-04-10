@@ -1,7 +1,7 @@
 #include "EasyNet/include/net/ChannelBuffer.h"
 #include "EasyNet/include/net/SocketApiWrapper.h"
-//#include "Common/CommonUtility/csw_control_logger.h"
 #include "EasyNet/include/net/Endian.h"
+#include "EasyNet/include/base/Log.h"
 #include <assert.h>
 #include <iostream>
 #include <string.h>
@@ -54,7 +54,8 @@ namespace Net
 	{
         if (len > ReadableBytes())
         {
-            //CLOG_INFO( "len" << len << "readble bytes:" << ReadableBytes());
+            LOG_ERROR << "Pop length" << len << "readble bytes:" << ReadableBytes();
+
         }
 		assert(len <= ReadableBytes());
 		if (len < ReadableBytes())
@@ -87,7 +88,6 @@ namespace Net
 		assert(readIndex_ >= dataLen);
 		const char* d = static_cast<const char*>(data);
 		readIndex_ -= dataLen;
-		//std::copy(d, d + dataLen, Begin() + readIndex_);
         memcpy(Begin()+readIndex_, d, sizeof(dataLen));
 
 	}
@@ -103,7 +103,7 @@ namespace Net
 		}
 		else if (readBytes == 0)
 		{
-			std::cout << "readBytes is 0...." << std::endl;
+			
 		}
 		else
 		{

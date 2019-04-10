@@ -1,4 +1,5 @@
 #include "EasyNet/include/net/Socket.h"
+#include "EasyNet/include/base/Log.h"
 #include <assert.h>
 #include <iostream>
 #include <string.h>
@@ -58,12 +59,12 @@ namespace Net
 			&optval, static_cast<socklen_t>(sizeof optval));
 		if (ret < 0)
 		{
-			//CLOG_ERROR("SO_REUSEPORT failed.");
+			LOG_ERROR << "SO_REUSEPORT failed.";
 		}
 #else
 		if (on)
 		{
-			//CLOG_ERROR("SO_REUSEPORT is not supported.");
+			LOG_ERROR << "SO_REUSEPORT is not supported.";
 		}
 #endif
 	}

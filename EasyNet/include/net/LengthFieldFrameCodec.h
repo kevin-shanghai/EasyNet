@@ -8,7 +8,7 @@
 namespace Net
 {
     //This class for support the protocol which have a fixed length header, the header indicate the message size//
-    class EXPORT_NETBASElIGHT LengthFieldFrameCodec
+    class  LengthFieldFrameCodec
     {
     public:
         typedef Function<void (const TcpConnectionPtr& conn, const std::string& msg)> CodecMessageCallback;

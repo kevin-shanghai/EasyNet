@@ -1,4 +1,5 @@
 #include "EasyNet/include/net/SocketApiWrapper.h"
+#include "EasyNet/include/base/Log.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stddef.h>
@@ -41,9 +42,8 @@ namespace Net
 #endif
         if (sockfd <= 0)
         {
-            //CLOG_ERROR("sockets::CreateBlockingSocket");
+            LOG_ERROR << "sockets::CreateBlockingSocket failed.";
         }
-        std::cout << "create new socket fd is:" << sockfd << std::endl;
         return sockfd;
     }
 
@@ -81,9 +81,9 @@ namespace Net
 #endif
         if (sockfd <= 0)
         {
-            //CLOG_ERROR("sockets::createNonblockingOrDie");
+			LOG_ERROR << "sockets::CreateBlockingSocket failed.";
         }
-        std::cout << "create new socket fd is:" << sockfd << std::endl;
+        LOG_TRACE << "create new socket fd is:" << sockfd;
         return sockfd;
 	}
 
@@ -98,7 +98,7 @@ namespace Net
         assert (!ret);
 		if (ret < 0)
 		{
-			//CLOG_ERROR( "SocketsApi::bind error---" );
+			LOG_ERROR << "SocketsApi::bind error---";
 		}
 	}
 
@@ -108,7 +108,7 @@ namespace Net
 		int listenRet = ::listen(sockfd, SOMAXCONN);
 		if (listenRet < 0)
 		{
-			//LOG_SYSFATAL << "sockets::listenOrDie";
+			LOG_SYSFATAL << "sockets::listenOrDie";
 		}
 	}
 
@@ -168,12 +168,12 @@ namespace Net
 #ifdef WINDOWS
 		if (::closesocket(sockfd) < 0)
 		{
-			//LOG_SYSERR << "sockets::close";
+			LOG_SYSERR << "sockets::close error";
 		}
 #else
 		if (::close(sockfd) < 0)
 		{
-			//LOG_SYSERR << "sockets::close";
+			LOG_SYSERR << "sockets::close error";
 		}
 #endif
 	}
@@ -183,12 +183,12 @@ namespace Net
 #ifdef WINDOWS
 		if (::shutdown(sockfd, SD_SEND) < 0)
 		{
-			//LOG_SYSERR << "sockets::shutdownWrite";
+			LOG_SYSERR << "sockets::shutdownWrite";
 		}
 #elif defined LINUX
 		if (::shutdown(sockfd, SHUT_WR) < 0)
 		{
-			//LOG_SYSERR << "sockets::shutdownWrite";
+			LOG_SYSERR << "sockets::shutdownWrite";
 		}
 #endif	
 	}
@@ -202,9 +202,7 @@ namespace Net
 		::inet_ntop(AF_INET, (void*)&addr.sin_addr, buf, static_cast<socklen_t>(size));   
 		size_t end = ::strlen(buf);
 
-		//uint16_t port = sockets::networkToHost16(addr.sin_port);
 		uint16_t port = ntohs(addr.sin_port);
-		//uint16_t port = ::be16toh(addr.sin_port);
 		assert(size > end);
 		snprintf(buf + end, size - end, ":%u", port);
 	}
@@ -218,17 +216,14 @@ namespace Net
 	void SocketsApi::FromIpPort(const char* ip, uint16_t port, sockaddr_in_t* addr)
 	{
         addr->sin_family = AF_INET;
-        //addr->sin_port = hostToNetwork16(port);
         addr->sin_port = htons(port);
         if (::inet_pton(AF_INET, ip, &addr->sin_addr) <= 0)
         {
-            std::cout  << " Error, sockets::fromIpPort" << std::endl;
+            LOG_ERROR << " Error, sockets::fromIpPort";
             exit(-1);
         }
-        //return Success;
 	}
 
-	//int GetSocketError(socket_t sockfd);
 
 	sockaddr_in_t SocketsApi::GetLocalAddr(socket_t sockfd)
 	{
@@ -237,7 +232,7 @@ namespace Net
 		socklen_t addrlen = static_cast<socklen_t>(sizeof localaddr);
 		if (::getsockname(sockfd, (sockaddr_t*)(&localaddr), &addrlen) < 0)
 		{
-			//LOG_SYSERR << "sockets::getLocalAddr";
+			LOG_SYSERR << "sockets::getLocalAddr";
 		}
 		return localaddr;
 	}
@@ -249,7 +244,7 @@ namespace Net
 		socklen_t addrlen = static_cast<socklen_t>(sizeof peeraddr);
 		if (::getpeername(sockfd, (sockaddr_t*)(&peeraddr), &addrlen) < 0)
 		{
-			//LOG_SYSERR << "sockets::getPeerAddr";
+			LOG_SYSERR << "sockets::getPeerAddr";
 		}
 		return peeraddr;
 	}
@@ -275,7 +270,7 @@ namespace Net
 		{
 #ifdef ON_WINDOWS
             int err = WSAGetLastError();
-            std::cout << "errcode is:" << err << std::endl;
+            LOG_ERROR << "errcode is:" << err << std::endl;
 #endif
 			return optval;
 		}
@@ -292,7 +287,7 @@ namespace Net
 #endif
         if (bRet)
         {
-            std::cout << "SetBlocking failed..." << std::endl;
+            LOG_ERROR << "SetBlocking failed..." ;
         }
         return !bRet;
     }

@@ -1,6 +1,6 @@
 #include "EasyNet/include/net/TcpConnection.h"
 #include "EasyNet/include/net/EventLoop.h"
-//#include "Common/CommonUtility/csw_control_logger.h"
+#include "EasyNet/include/base/Log.h"
 #include <iostream>
 
 
@@ -11,7 +11,7 @@ namespace Net
 
     void defaultConnectionCallback(const TcpConnectionPtr& conn)
     {
-        std::cout << conn->GetLocalAddress().GetIpAndPort() << " -> "
+        LOG_TRACE << conn->GetLocalAddress().GetIpAndPort() << " -> "
             << conn->GetPeerAddress().GetIpAndPort() << " is "
             << (conn->IsConnected() ? "UP" : "DOWN");	
     }
@@ -61,7 +61,6 @@ namespace Net
 	{
 		if (connectionState_ == kConnected)
 		{
-			//SendStringPieceInLoop(message.ReadAllAsString());
             int64_t iReadableBytes = message.ReadableBytes();
             SendDataInLoop(message.GetReadPointer(), iReadableBytes);
 		}
@@ -80,7 +79,7 @@ namespace Net
 		bool faultError = false;
 		if (connectionState_ == kDisconnected)
 		{
-			//CLOG_INFO("disconnected, give up writing");
+			LOG_INFO << "disconnected, give up writing";
 			return;
 		}
 		// if nothing in output queue, try writing directly
@@ -96,7 +95,7 @@ namespace Net
 				iWriteBytes = 0;
 				if (errno != EWOULDBLOCK)
 				{
-					if (errno == EPIPE || errno == ECONNRESET) // FIXME: any other conditions //
+					if (errno == EPIPE || errno == ECONNRESET) 
 					{
 						faultError = true;
 					}
@@ -107,8 +106,8 @@ namespace Net
 		if (!faultError && remaining > 0)
 		{
 			outputBuf_.Append(static_cast<const char*>(data) + iWriteBytes, remaining);
-            //CLOG_INFO("outbuffer size:" << outputBuf_.Size()
-                //<< " remaining:" << remaining);
+            LOG_INFO <<"outbuffer size:" << outputBuf_.Size()
+                << " remaining:" << remaining;
 			if (!connectionChannelPtr_->IsWriting())
 			{
                 connectionChannelPtr_->EnableWriting();
@@ -145,7 +144,7 @@ namespace Net
         else
         {
             errno = saveErrno;
-            std::cout << "TcpConnection::handleRead Error...";
+            LOG_ERROR << "TcpConnection::handleRead Error...";
             HandleError();
         }
 	}
@@ -160,8 +159,6 @@ namespace Net
 			int n = SocketsApi::Send(connectionChannelPtr_->GetSocketFd(), 
 									outputBuf_.GetReadPointer(), 
 									outputBuf_.ReadableBytes());
-            //CLOG_INFO("HandleWrite, output buffer size:" << outputBuf_.Size()
-            //    << " n:" << n);
 			if (n > 0)
 			{
 				outputBuf_.Pop(n);
@@ -185,7 +182,7 @@ namespace Net
 		}
 		else
 		{
-			std::cout << "Connection fd = " << connectionChannelPtr_->GetSocketFd()
+			LOG_INFO << "Connection fd = " << connectionChannelPtr_->GetSocketFd()
 				<< " is down, can not write any more...";
 		}
 		
@@ -210,7 +207,7 @@ namespace Net
 	{
 		int err = SocketsApi::GetSocketError(connectionChannelPtr_->GetSocketFd());
 		//errno = GetLastError();
-		std::cout << "TcpConnection::handleError [" << name_ << "] -SO_ERROR = " << err << " " << strerror(err);
+		LOG_ERROR << "TcpConnection::handleError [" << name_ << "] -SO_ERROR = " << err << " " << strerror(err);
 
 	}
 

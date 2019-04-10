@@ -6,16 +6,14 @@
 #include "EasyNet/include/net/InternetAddress.h"
 #include <map>
 
-#ifdef EXPORT_NETBASElIGHT
-#define CSW_EXPORT_OWNER
-#endif
+
 
 namespace Net
 {
     class Acceptor;
     class EventLoop;
     class EventLoopThreadGroup;
-    class EXPORT_NETBASElIGHT TcpServer : Noncopyable
+    class  TcpServer : Noncopyable
     {
     public:
         typedef std::map<std::string, TcpConnectionPtr> ConnectionMap;

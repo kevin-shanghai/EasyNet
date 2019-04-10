@@ -1,6 +1,7 @@
 #include "EasyNet/include/net/TcpConnector.h"
 #include "EasyNet/include/net/EventLoop.h"
 #include "EasyNet/include/net/Channel.h"
+#include "EasyNet/include/base/Log.h"
 #include <assert.h>
 #include <iostream>
 
@@ -15,11 +16,10 @@ Connector::Connector(EventLoop* loop, const InternetAddress& serverAddr)
 	state_(kDisconnected),
 	retryDelayMs_(kInitRetryDelayMs)
 {
-	std::cout << "ctor [" << this << "]";
 }
+
 Connector::~Connector()
 {
-	std::cout << "dtor ["<<this<<"]";
 	assert(!channel_);
 }
 
@@ -36,10 +36,6 @@ void Connector::startInLoop()
 	if (connect_)
 	{
 		connect();
-	}
-	else
-	{
-		std::cout << "do not connect";
 	}
 }
 void Connector::stop()
@@ -103,12 +99,12 @@ void Connector::connect()
 	case EBADF:
 	case EFAULT:
 	case ENOTSOCK:
-		std::cout << "connect error in Connector::startInLoop " << savedErrno;
+		LOG_TRACE << "connect error in Connector::startInLoop " << savedErrno;
 		SocketsApi::Close(sockfd);
 		break;
 
 	default:
-		std::cout << "Unexpected error in Connector::startInLoop " << savedErrno;
+		LOG_TRACE << "Unexpected error in Connector::startInLoop " << savedErrno;
 		SocketsApi::Close(sockfd);
 		// connectErrorCallback_();
 		break;
@@ -152,21 +148,18 @@ void Connector::resetChannel()
 
 void Connector::handleWrite()
 {
-	std::cout << "Connector::handleWrite " << state_;
-
 	if (state_ == kConnecting)
 	{
 		int sockfd = removeAndResetChannel();
 		int err = SocketsApi::GetSocketError(sockfd);
 		if (err)
 		{
-			std::cout << "Connector::handleWrite - SO_ERROR = "
+			LOG_ERROR << "Connector::handleWrite - SO_ERROR = "
 				<< err << " " << strerror(err);
 			retry(sockfd);
 		}
 		else if (SocketsApi::IsSelfConnect(sockfd))
 		{
-			std::cout << "Connector::handleWrite - Self connect";
 			retry(sockfd);
 		}
 		else
@@ -191,12 +184,11 @@ void Connector::handleWrite()
 
 void Connector::handleError()
 {
-	std::cout << "Connector::handleError state=" << state_;
 	if (state_ == kConnecting)
 	{
 		int sockfd = removeAndResetChannel();
 		int err = SocketsApi::GetSocketError(sockfd);
-		std::cout << "SO_ERROR = " << err << " " << strerror(err);
+		LOG_ERROR << "SO_ERROR = " << err << " " << strerror(err);
 		retry(sockfd);
 	}
 }
@@ -206,13 +198,8 @@ void Connector::retry(int sockfd)
 	setState(kDisconnected);
 	if (connect_)
 	{
-		std::cout << "Connector::retry - Retry connecting to " << serverAddr_.GetIpAndPort()
-                  << std::endl;
+		LOG_TRACE << "Connector::retry - Retry connecting to " << serverAddr_.GetIpAndPort();
         //reconnect server every 2 seconds//
         loop_->RunAfter_s(2, Bind(&Connector::startInLoop, this));
-	}
-	else
-	{
-		std::cout << "do not connect";
 	}
 }

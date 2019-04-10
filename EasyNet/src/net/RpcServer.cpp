@@ -2,6 +2,7 @@
 #include "EasyNet/include/net/EventLoop.h"
 #include "EasyNet/include/net/TcpConnection.h"
 #include "EasyNet/include/net/RpcChannel.h"
+#include "EasyNet/include/base/Log.h"
 #include "google/protobuf/service.h"
 #include "google/protobuf/descriptor.h"
 
@@ -30,7 +31,7 @@ namespace Net
 
     void RpcServer::onConnection(const TcpConnectionPtr& conn)
     {
-        std::cout << "RpcServer - " << conn->GetPeerAddress().GetIpAndPort() << " -> "
+        LOG_TRACE << "RpcServer - " << conn->GetPeerAddress().GetIpAndPort() << " -> "
             << conn->GetLocalAddress().GetIpAndPort() << " is "
             << (conn->IsConnected() ? "UP" : "DOWN");
         if (conn->IsConnected())

@@ -2,8 +2,8 @@
 #include "EasyNet/include/net/HttpRequest.h"
 #include "EasyNet/include/net/HttpResponse.h"
 #include "EasyNet/include/net/HttpParser.h"
-#include "EasyNet/include/net/HttpResponse.h"
 #include "EasyNet/include/net/TcpConnection.h"
+#include "EasyNet/include/base/Log.h"
 
 using namespace Net;
 
@@ -34,7 +34,7 @@ HttpServer::~HttpServer()
 
 void HttpServer::start()
 {
-    std::cout << "HttpServer[" << server_.name()
+    LOG_TRACE << "HttpServer[" << server_.name()
         << "] starts listenning on " << server_.hostport();
     server_.start();
 }

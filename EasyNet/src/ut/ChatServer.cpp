@@ -2,6 +2,7 @@
 #include "EasyNet/include/net/TcpServer.h"
 #include "EasyNet/include/net/EventLoop.h"
 #include "EasyNet/include/net/TcpConnection.h"
+#include "EasyNet/include/base/Log.h"
 #include <set>
 #include <iostream>
 
@@ -58,8 +59,16 @@ private:
 	std::set<TcpConnectionPtr> connections_;
 };
 
+using namespace Logger;
+Shared_ptr<SyncLogging> syncLogging(new SyncLogging);
+void output_func(const char* msg, uint64_t len)
+{
+	syncLogging->Append(msg, len);
+}
+
 int main()
 {
+	Log::SetOutputFuncCallback(output_func);
 	InternetAddress listenAddr(2000);
 	EventLoop loop;
 

@@ -46,12 +46,6 @@ Timestamp Timestamp::Now()
     struct timeval tv;
     ::gettimeofday(&tv, NULL);
     microSecondsSinceEpoch = tv.tv_sec * kMicroSecondsPerSeconds + tv.tv_usec;
-
-    //struct timespec tp;
-    //if  ( (clock_gettime(CLOCK_REALTIME, &tp))==0)
-    //{
-    //    microSecondsSinceEpoch = tp.tv_sec * kMicroSecondsPerSeconds + tp.tv_nsec / 1000;
-    //}
 #endif
     assert(microSecondsSinceEpoch > 0);
     return Timestamp(microSecondsSinceEpoch);
@@ -62,7 +56,7 @@ std::string Timestamp::ToCalenderTime()
 {
     std::stringstream ss;
     ss << std::setw(6)<< std::setfill('0') << (microSecondsSinceEpoch_ % kMicroSecondsPerSeconds);
-    return GetCurrentLocalTime() + "." + ss.str();
+    return GetCurrentLocalTime() + "_" + ss.str();
 
 }
 
@@ -92,7 +86,7 @@ std::string Timestamp::GetCurrentLocalTime()
     time_t rawTime = time(&rawTime);
     tm* timeInfo = localtime(&rawTime);
     char buffer[25] = { '\0' };
-    strftime(buffer, 25, "%Y%m%d %H%M%S", timeInfo);
+    strftime(buffer, 25, "%Y%m%d_%H%M%S", timeInfo);
     return buffer;
 }
 

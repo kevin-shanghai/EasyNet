@@ -3,6 +3,7 @@
 #include "EasyNet/include/net/TcpConnector.h"
 #include "EasyNet/include/net/TcpConnection.h"
 #include "EasyNet/include/net/ICallBackDefine.h"
+#include "EasyNet/include/base/Log.h"
 
 
 using namespace base;
@@ -20,12 +21,11 @@ namespace Net
         nextConnId_(1)
     {
         connector_->setNewConnectionCallback(Bind(&TcpClient::newConnection, this, Placeholders _1));
-        std::cout << "TcpClient::TcpClient [" << name_ << "]";
+        LOG_TRACE << "TcpClient::TcpClient [" << name_ << "]";
     }
 
     TcpClient::~TcpClient()
     {
-        std::cout << "TcpClient::~TcpClient [" << name_ << "]";
         TcpConnectionPtr conn;
         bool unique = false;
         {
@@ -40,14 +40,11 @@ namespace Net
         else
         {
             connector_->stop();
-            //FIXME: HACK
-            //loop_->runAfter(1, boost::bind(&detail::removeConnector, connector_));
         }
     }
     void TcpClient::connect()
     {
-        // FIXME: check state
-        std::cout << "TcpClient::connect[" << name_ << "] - connecting to "
+        LOG_TRACE << "TcpClient::connect[" << name_ << "] - connecting to "
             << connector_->serverAddress().GetIpAndPort();
         connect_ = true;
         connector_->start();
@@ -117,7 +114,7 @@ namespace Net
         loop_->QueueInLoop(f);
         if (retry_ && connect_)
         {
-            std::cout << "TcpClient::connect[" << name_ << "] - Reconnecting to "
+            LOG_TRACE << "TcpClient::connect[" << name_ << "] - Reconnecting to "
                 << connector_->serverAddress().GetIpAndPort();
             connector_->restart();
         }

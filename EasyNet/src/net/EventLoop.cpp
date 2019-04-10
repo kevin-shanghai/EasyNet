@@ -9,7 +9,7 @@
 #include "EasyNet/include/base/TimeStamp.h"
 #include "EasyNet/include/net/SocketApiWrapper.h"
 #include "EasyNet/include/net/Timer.h"
-//#include "Common/CommonUtility/csw_control_logger.h"
+#include "EasyNet/include/base/Log.h"
 #include <iostream>
 #include <assert.h>
 #include <algorithm>
@@ -31,9 +31,8 @@ namespace Net
         poller_ = (PollerFactory::CreateDefaultPoller(this));
 		if (t_threadLocalEventLoop)
 		{
-			std::cout << "Another EventLoop:" << t_threadLocalEventLoop 
-				<< "in this thread " << this_thread_::get_id() << std::endl;
-            
+			LOG_INFO << "Another EventLoop:" << t_threadLocalEventLoop 
+				<< "in this thread " << this_thread_::get_id();
 		}
 		else
 		{
@@ -65,7 +64,7 @@ namespace Net
             if (iTimeout <= 0)
             {
                 //handle the timer which is time out immediatly//
-                //CLOG_ERROR("time out for timer executer.");
+                LOG_ERROR << "time out for timer executer.";
                 timerManagerPtr_->Process();
                 continue;
             }

@@ -1,8 +1,7 @@
 #include "EasyNet/include/net/Channel.h"
 #include "EasyNet/include/net/EventLoop.h"
 #include "EasyNet/include/net/SocketApiWrapper.h"
-
-//#include "Common/CommonUtility/csw_control_logger.h"
+#include  "EasyNet/include/base/Log.h"
 
 #include <iostream>
 #include <assert.h>
@@ -20,7 +19,6 @@ namespace Net
 
 	Channel::~Channel()
 	{
-		//CLOG_INFO("Channel dtor...");
         intrestEvent_ = kInvalidEvent;
         readyEvent_ = kInvalidEvent;
 
@@ -32,7 +30,7 @@ namespace Net
 	void Channel::SetInterestEvent(EventType intrestEvent)
 	{
 		intrestEvent_ |= intrestEvent;
-        //CLOG_INFO(" ---SetInterestEvent:" << intrestEvent_);
+		LOG_INFO << " ---SetInterestEvent:" << intrestEvent_;
 		Update();
 	}
 

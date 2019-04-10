@@ -1,7 +1,9 @@
 #include "EasyNet/include/net/ProtobufFrameCodec.h"
 #include "EasyNet/include/net/Endian.h"
 #include "EasyNet/include/net/TcpConnection.h"
+#include "EasyNet/include/base/Log.h"
 #include "google/protobuf/descriptor.h"
+#include "EasyNet/include/base/Log.h"
 
 
 namespace Net
@@ -13,7 +15,6 @@ namespace Net
         ParseErrorCode errorCode)
     {
         buf;
-        std::cout << "ProtobufCodec::defaultErrorCallback - " << (errorCode);
         if (conn && conn->IsConnected())
         {
             conn->Shutdown();
@@ -111,7 +112,7 @@ namespace Net
         uint8_t* end = message.SerializeWithCachedSizesToArray(start);
         if (end - start != byte_size)
         {
-            std::cout << "serialize error with cache..." << std::endl;
+            LOG_ERROR << "serialize error with cache...";
         }
         buf->HasWritten(byte_size);
 

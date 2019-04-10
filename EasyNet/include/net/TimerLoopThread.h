@@ -3,18 +3,12 @@
 #include "EasyNet/include/net/EventLoop.h"
 
 
-#ifdef EXPORT_NETBASElIGHT
-#define CSW_EXPORT_OWNER
-#endif
-
-
-
 namespace Net
 {
     class EventLoopThread;
     class TcpServer;
 
-    class EXPORT_NETBASElIGHT TimerLoopThread 
+    class TimerLoopThread 
     {
     public:
         TimerLoopThread();

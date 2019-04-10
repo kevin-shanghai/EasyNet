@@ -2,6 +2,7 @@
 #include "EasyNet/include/net/RpcMessage.pb.h"
 #include "EasyNet/include/net/TcpConnection.h"
 #include "EasyNet/include/base/MutexLock.h"
+#include "EasyNet/include/base/Log.h"
 #include "google/protobuf/descriptor.h"
 #include "google/protobuf/message.h"
 #include "google/protobuf/stubs/common.h"
@@ -79,7 +80,7 @@ void RpcChannel::onRpcMessage(const TcpConnectionPtr& conn, const ProtobufMessag
     }
     else
     {
-        //CLOG_ERROR("not rpc message, can not handle here.");
+        LOG_ERROR << "not rpc message, can not handle here.";
     }
 }
 
