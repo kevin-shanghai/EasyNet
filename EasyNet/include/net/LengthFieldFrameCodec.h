@@ -3,9 +3,6 @@
 #include "EasyNet/include/net/ICallBackDefine.h"
 #include "EasyNet/include/base/StringPiece.h"
 
-#ifdef EXPORT_NETBASElIGHT
-#define CSW_EXPORT_OWNER
-#endif
 
 
 namespace Net

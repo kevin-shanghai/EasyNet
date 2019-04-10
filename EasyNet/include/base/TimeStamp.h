@@ -5,11 +5,8 @@
 #include <stdint.h>
 #include <string>
 
-#ifdef EXPORT_NETBASElIGHT
-#define CSW_EXPORT_OWNER
-#endif
 
-class EXPORT_NETBASElIGHT Timestamp
+class  Timestamp
 {
 public:
  

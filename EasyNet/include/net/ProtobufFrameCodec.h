@@ -7,9 +7,7 @@
 #include "google/protobuf/message.h"
 
 
-#ifdef EXPORT_NETBASElIGHT
-#define CSW_EXPORT_OWNER
-#endif
+
 
 
 namespace Net
@@ -29,7 +27,7 @@ namespace Net
 
 	typedef Function<void(const TcpConnectionPtr&, ChannelBuffer*, ParseErrorCode)> ProtobufErrorCallback;
 
-	class EXPORT_NETBASElIGHT ProtobufFrameCodec 
+	class  ProtobufFrameCodec 
 	{
 	public:
 		ProtobufFrameCodec(const ProtobufMessageCallback& messageCb);

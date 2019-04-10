@@ -6,7 +6,7 @@
 #include "EasyNet/include/base/Condition.h"
 
 
-#ifdef EXPORT_NETBASElIGHT
+#ifdef EXPORT_EASYNET
 #define CSW_EXPORT_OWNER
 #endif
 

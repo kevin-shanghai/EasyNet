@@ -1,19 +1,15 @@
-#ifndef NETBASELIGHT_INTERNET_ADDRESS_H__
-#define NETBASELIGHT_INTERNET_ADDRESS_H__
+#ifndef INTERNET_ADDRESS_H__
+#define INTERNET_ADDRESS_H__
 
 
 #include "EasyNet/include/net/SocketApiWrapper.h"
 #include "EasyNet/include/base/PlatformDefine.h"
 #include <string>
 
-#ifdef EXPORT_NETBASElIGHT
-#define CSW_EXPORT_OWNER
-#endif
-
 
 namespace Net
 {
-	class EXPORT_NETBASElIGHT InternetAddress
+	class InternetAddress
 	{
 	public:
 		explicit InternetAddress(port_t port = 0);

@@ -1,5 +1,5 @@
-#ifndef NETBASELIGHT_LOG_ASYNC_QUEUE_H__
-#define NETBASELIGHT_LOG_ASYNC_QUEUE_H__
+#ifndef ASYNC_QUEUE_H__
+#define ASYNC_QUEUE_H__
 #include <deque>
 #include <iostream>
 #include "EasyNet/include/base/Condition.h"
@@ -25,11 +25,7 @@ namespace base
             LockGuard lk(&mutex_);
             if (Full())
             {
-                std::cout << "########Notice, Log Message Queue is full, "
-                    << queue_.size() << " this thread will pending#####"
-                    << std::endl;
                 notFullCond_.Wait();
-                return;
             }
             queue_.push_back(value);
             notEmptyCond_.NotifyOne();

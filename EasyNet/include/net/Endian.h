@@ -1,5 +1,5 @@
-#ifndef NETBASELIGHT_ENDIAN_H__
-#define NETBASELIGHT_ENDIAN_H__
+#ifndef ENDIAN_H__
+#define ENDIAN_H__
 #include <stdint.h>
 #include "EasyNet/include/net/SoketDefine.h"
 

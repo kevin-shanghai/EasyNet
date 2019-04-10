@@ -1,5 +1,5 @@
-#ifndef NETBASELIGHT_CHANNEL_BUFFER_H__
-#define NETBASELIGHT_CHANNEL_BUFFER_H__
+#ifndef CHANNEL_BUFFER_H__
+#define CHANNEL_BUFFER_H__
 
 #include <stdint.h>
 #include <vector>

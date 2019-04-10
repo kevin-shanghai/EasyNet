@@ -7,9 +7,7 @@
 #include "EasyNet/include/net/ICallBackDefine.h"
 
 
-#ifdef EXPORT_NETBASElIGHT
-#define CSW_EXPORT_OWNER
-#endif
+
 
 namespace Net
 {
@@ -18,7 +16,7 @@ namespace Net
     class EventLoop;
     typedef Shared_ptr<Connector> ConnectorPtr;
 
-    class EXPORT_NETBASElIGHT TcpClient 
+    class TcpClient 
     {
     public:
         TcpClient(EventLoop*loop,
